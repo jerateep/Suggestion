@@ -1,0 +1,169 @@
+﻿@model SGO.ViewModels.SGOCreateVM
+
+@{
+    ViewData["Title"] = "CreateSGO";
+}
+
+<div class="box-header with-border">
+    <strong><font color="red"> Create  Suggestion.</font></strong> > Team Approved > Manager Approved > Accounting Approved
+</div>
+
+<div class="col-lg-12">
+    <form asp-action="CreateSGO">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row margintop-10">
+            <div class="col-lg-7 pull-left">
+                <div class="row marginbot-10">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <img src="~/img/company_logo.jpg" width="50px" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <div class="col-lg-12">
+                            <strong>ลงทะเบียนเลขที่ :</strong>
+                            <span>@Model.SGO_ID </span>
+                            <br />
+                            <strong>สถานะเอกสาร : @Model.Status_name</strong>
+                            <br />
+                            <strong>วันที่ :</strong>
+                            <span>@Model.dtm_Request</span>
+                            <div class="row padding-top">
+                                <div class="col-lg-5 right padding-top">
+                                    <strong>เสนอปรับปรุง :</strong>
+                                    @Html.DropDownListFor(x => x.Dep_ID_Request, new SelectList(Model.department, "dep_id", "dep_name"), "-- เลือกหน่วยงาน --", new { @class = "form-control" })
+                                </div>
+                                <div class="col-lg-7">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 pull-right">
+                <div class="row">
+                    <div class="padding-top">
+                        <strong>รหัสพนักงาน:</strong>
+                            <span>@Model.cod_Requester</span>
+                            <br />
+                            <strong>ชื่อ: </strong>
+                            <span>@Model.FName  @Model.LName</span>
+                            <br />
+                            <strong>หน่วยงาน :</strong>
+                            <span>@Model.Dep_name / @Model.Subdep_name</span>
+                            <br />
+                            <strong>โทร:</strong><br />
+                            <span><input type="text" asp-for="Phone" /></span>
+                            <br />
+                            <strong>กะงาน: </strong>
+                            <span> @Html.DropDownListFor(x => x.Shift, new SelectList(Model.SHIFT, "Shift_id", "Shift_Time"), "-- เลือกกะงาน --", new { @class = "form-control",@style = "width: 150px;" })</span>
+                            <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <strong>เรื่อง</strong>
+            <input asp-for="Subject" class="form-control" />
+            <span asp-validation-for="Subject" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <strong>ประเภทการเสนอแนะ</strong><br />
+            <table>
+                <tr>
+                    @for (int i = 0; i < Model.SGOType.Count; i++)
+                    {
+                        <td><input name="cod_config" type="checkbox" value="@Model.SGOType[i].SGOType_ID" /> @Model.SGOType[i].SGOType_name </td><td></td>
+                    }
+                </tr>
+            </table>
+        </div>
+        <div class="form-group margintop-10">
+            <div class="pull-left">
+                <strong>สภาพปัจจุบัน</strong>
+                <input asp-for="Detail_Now" class="form-control" />
+                <span asp-validation-for="Detail_Now" class="text-danger"></span>
+            </div>
+            <div class="pull-right">
+                <strong>ข้อเสนอแนะปรับปรุงแก้ไขใหม่</strong>
+                <input asp-for="Detail_Future" class="form-control" />
+                <span asp-validation-for="Detail_Future" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="form-group">
+            <strong>ผลที่คาดว่าจะได้รับ</strong>
+            <input asp-for="Detail_Result" class="form-control" />
+            <span asp-validation-for="Detail_Result" class="text-danger"></span>
+        </div>
+        <hr />
+        <div class="form-group">
+            <strong>หมายเหตุ : เอกสารอ้างอิง</strong><br />
+
+            <input asp-controller="FileUpload" asp-action="Upload" type="file" name="files" multiple />
+            <button type="submit">Upload</button>
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-success" style="margin-top:20px">
+                    @ViewBag.Message
+                </div>
+            }
+
+        </div>
+        <hr />
+        <div class="form-group">
+            <strong>สมาชิก</strong><br /><input type="button" value="เพิ่มสามาชิก" class="btn btn-info"/><br /><br />
+            <table border="1">
+                <tr>
+                    <th>#</th>
+                    <th>ชื่อ</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>1.</td>
+                    <td>@Model.FName @Model.LName</td>
+                    <td>X</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>@Model.FName 2 @Model.LName  2</td>
+                    <td>X</td>
+                </tr>
+            </table>
+        </div>
+        <hr />
+        <div class="form-group">
+            <strong>ไว้โชว์ Step หัวหน้าอนุมัติ</strong>
+            <strong>หัวหน้า</strong><br />
+            @{int index = 0;}
+            @foreach (var k in Model.Approver)
+            {
+                @for (int i = 0; i < Model.StatusAppMng.Count; i++)
+                {
+                    <input name="Approved" type="radio" value="@Model.StatusAppMng[i].Status_id" /> @Model.StatusAppMng[i].Status_name<br />
+                }
+                
+            <strong>ลงความเห็น: </strong>
+            <input asp-for="Approver[index].txt_comment" />
+            <strong>@k.App_pers_id</strong>
+            index++;
+        }
+        </div>
+        <div class="form-group">
+            <input asp-action="Save" type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">Download PDF</a> | 
+        <a asp-action="Index">Print</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

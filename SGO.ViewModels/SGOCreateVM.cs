@@ -7,8 +7,6 @@ namespace SGO.ViewModels
 {
     public class SGOCreateVM : SGO_HEAD
     {
-        public string FName { get; set; }
-        public string Subdep_name { get; set; }
         public string Status_name { get; set; }
         public List<SGO_Department> department { get; set;}
         public List<SGO_Type> SGOType { get; set; }

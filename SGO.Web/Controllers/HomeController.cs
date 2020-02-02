@@ -20,15 +20,17 @@ namespace SGO.Web.Controllers
         }
         public IActionResult CreateSGO() 
         {
+
             SGOCreateVM Create = new SGOCreateVM();
-            Create.SGO_ID = "SGO-IT-2020-001";
-            Create.Status_name = "เอกสารใหม่";
-            Create.cod_Requester = "B-xxxx";
-            Create.FName = "Demo";
-            Create.LName = "SGO";
+            Models.MySQL.SGO_HEAD Data = new DummyData().GetHead().SingleOrDefault();
+            Create.SGO_ID = Data.SGO_ID;
+            Create.Status_name = "New";
+            Create.cod_Requester = Data.cod_Requester;
+            Create.Fname = Data.Fname;
+            Create.LName = Data.LName;
             Create.dtm_Request = DateTime.Now.Date;
-            Create.Dep_name = "B-IT";
-            Create.Subdep_name = "APP";
+            Create.Dep_name = Data.Dep_name;
+            Create.Dep_Section = Data.Dep_Section;
             Create.department = _entMy.SGO_Department.ToList();
             Create.SGOType = _entMy.SGO_Type.Where(x => x.Cod_group == "SGO" && x.SGOType_Status == "A").ToList();
             Create.SHIFT = _entMy.SGO_SHIFT.ToList();
@@ -38,7 +40,7 @@ namespace SGO.Web.Controllers
         }
 
 
-        public IActionResult Save(SGOCreateVM SGO, List<string> cod_config)
+        public IActionResult Save(SGOCreateVM SGO, List<string> lsSGO)
         {
             return View();
         }

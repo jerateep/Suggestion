@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="row marginbot-10">
-            <div class="col-md-12 col-xs-12" style="background-color:dodgerblue"><font color="white">รายละเอียด</font></div>
+            <div class="col-md-12 col-xs-12" style="background-color:dodgerblue"><strong><font color="white">รายละเอียด</font></strong></div>
         </div>
 
         <div class="form-group">
@@ -110,9 +110,9 @@
         <div class="form-group">
             <div class="pull-left">
                 <input type="file" id="fUpload" name="files" class="form-control" />
-                <input type="text" id="txtfiledesc" />
             </div>
             <div class="pull-right">
+                <strong>รายละเอียด:</strong>&nbsp;&nbsp;&nbsp;<input type="text" id="txtfiledesc"  width="200"/>&nbsp;&nbsp;&nbsp;
                 <input type="button" id="btnUpload" value="Upload" class="btn btn-success" formmethod="post" formenctype="multipart/form-data" />
             </div>
 
@@ -125,6 +125,7 @@
                         <th bgcolor="grey"><font color="white">#</font></th>
                         <th bgcolor="grey"><font color="white">ชื่อไฟล์</font></th>
                         <th bgcolor="grey"><font color="white">รายละเอียด</font></th>
+                        <th bgcolor="grey"><font color="white">Download</font></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -135,23 +136,24 @@
         </div>
         <br />
         <div class="form-group">
-            <input type="button" value="เพิ่มสามาชิก" class="btn btn-info" /><br /><br />
-            <table border="1">
-                <tr>
-                    <th>#</th>
-                    <th>ชื่อ</th>
-                    <th>รายละเอียด</th>
-                </tr>
-                <tr>
-                    <td>1.</td>
-                    <td>@Model.Fname @Model.LName</td>
-                    <td>X</td>
-                </tr>
-                <tr>
-                    <td>2.</td>
-                    <td>@Model.Fname 2 @Model.LName  2</td>
-                    <td>X</td>
-                </tr>
+            <input type="button" value="เพิ่มสมาชิก" class="btn btn-info" /><br /><br />
+            <table id="tblteam" class="table table-bordered table-condensed table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th bgcolor="grey"><font color="white">#</font></th>
+                        <th bgcolor="grey"><font color="white">รหัสพนักงาน</font></th>
+                        <th bgcolor="grey"><font color="white">ชื่อ สกุล</font></th>
+                        <th bgcolor="grey"><font color="white">ตำแหน่ง</font></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>@Model.cod_Requester</td>
+                        <td>@Model.Fname @Model.LName</td>
+                        <td>@Model.Position</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         <div class="row marginbot-10">

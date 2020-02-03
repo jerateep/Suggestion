@@ -1,0 +1,10 @@
+/.vs
+/.vscode
+/SGO.Models/bin
+/SGO.Models/obj
+/SGO.ViewModels/bin
+/SGO.ViewModels/obj
+/SGO.Web/bin
+/SGO.Web/obj
+/SGO.WebService/obj
+/SGO.WebService/bin

@@ -38,7 +38,7 @@ namespace SGO.Web.Controllers
                 }
                 lsFile.Add(FileData);
             }
-            var JsonResult = lsFile.Select(k => new { k.FileName }).ToList();
+            var JsonResult = lsFile.Select(k => new { k.FileName,k.Description }).ToList();
             SGO.ViewModels.FileStore.Files = lsFile;
 
 

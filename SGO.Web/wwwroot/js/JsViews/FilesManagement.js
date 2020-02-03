@@ -2,7 +2,9 @@
     $('#btnUpload').on('click', function () {
         var files = $('#fUpload').prop("files");
         var fdata = new FormData();
-        var txtdesc = "ererer";
+        
+        var txtdesc = document.getElementById("txtfiledesc").value;
+        console.log(txtdesc);
         for (var i = 0; i < files.length; i++) {
             fdata.append("files", files[i]);
         }
@@ -23,21 +25,25 @@
                     var Result = response;
                     console.log(Result);
                     var tr;
-                    //Append each row to html table
                     for (var i = 0; i < Result.length; i++) {
                         tr = $('<tr/>');
                         tr.append("<td><input type='submit' id='delfile' class='btn btn-danger' value='Delete'/></td>");
                         tr.append("<td>" + Result[i].fileName + "</td>");
-                        tr.append("<td>" + Result[i].Description +"</td>");
-                        tr.append("");
+                        tr.append("<td>" + Result[i].description +"</td>");
+                        tr.append("<td></td>");
                         $('#tblfile').append(tr);
                     }
                 }
             });
             $("#fUpload").val('');
+            $("#txtfiledesc").val('');
         }
         else {
             alert('Please select a file.');
         }
     });
 });
+
+function DeleteFile() {
+
+}

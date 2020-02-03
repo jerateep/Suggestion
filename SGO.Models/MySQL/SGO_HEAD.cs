@@ -12,6 +12,7 @@ namespace SGO.Models.MySQL
         public string SGO_ID { get; set; }
         public string Fname { get; set; }
         public string LName { get; set; }
+        public string Position { get; set; }
         public string Phone { get; set; }
         public string Dep_name { get; set; }
         public string Dep_Section { get; set; }

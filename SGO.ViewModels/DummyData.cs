@@ -86,6 +86,7 @@ namespace SGO.ViewModels
             Doc1.cod_Requester = "B-00000";
             Doc1.Fname = "TEST";
             Doc1.LName = "SGO";
+            Doc1.Position = "Programmer";
             Doc1.Phone = "1144";
             Doc1.Dep_name = "IT";
             Doc1.Dep_Section = "Application";

@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "SGO.WebService/1.0.0": {
+        "dependencies": {
+          "SGO.Models": "1.0.0",
+          "SGO.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "SGO.WebService.dll": {}
+        }
+      },
+      "SGO.Models/1.0.0": {
+        "runtime": {
+          "SGO.Models.dll": {}
+        }
+      },
+      "SGO.ViewModels/1.0.0": {
+        "dependencies": {
+          "SGO.Models": "1.0.0"
+        },
+        "runtime": {
+          "SGO.ViewModels.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SGO.WebService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SGO.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SGO.ViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj",
+        "projectName": "SGO.Models",
+        "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj",
+        "packagesPath": "C:\\Users\\jerateeps\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jerateeps\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj",
+        "projectName": "SGO.ViewModels",
+        "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\jerateeps\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jerateeps\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
+                "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
+        "projectName": "SGO.WebService",
+        "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
+        "packagesPath": "C:\\Users\\jerateeps\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jerateeps\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
+                "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj"
+              },
+              "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj": {
+                "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

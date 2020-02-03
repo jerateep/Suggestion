@@ -20,6 +20,7 @@ namespace SGO.Web.Data
         public DbSet<SGO_TEAM> SGO_TEAM { get; set; }
         public DbSet<SGO_Type> SGO_Type { get; set; }
         public DbSet<SGO_SHIFT> SGO_SHIFT { get; set; }
+        public DbSet<SGO_Files> SGO_Files { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

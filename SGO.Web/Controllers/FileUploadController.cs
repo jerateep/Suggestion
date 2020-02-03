@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,37 +12,63 @@ namespace SGO.Web.Controllers
 {
     public class FileUploadController : Controller
     {
-        [HttpPost]
-        public IActionResult Upload(IFormFile[] files)
+        private IHostingEnvironment _hostingEnvironment;
+        public FileUploadController(IHostingEnvironment hostingEnvironment)
         {
-            // Iterate through uploaded files array
-            foreach (var file in files)
+            _hostingEnvironment = hostingEnvironment;
+        }
+        public void OnGet()
+        {
+        }
+
+        public JsonResult OnPostUpload(List<IFormFile> files,string desc)
+        {
+            List<SGO.Models.MySQL.SGO_Files> lsFile = new List<Models.MySQL.SGO_Files>();
+            foreach (var k in files)
             {
-                // Extract file name from whatever was posted by browser
-                var fileName = System.IO.Path.GetFileName(file.FileName);
-
-                // If file with same name exists delete it
-                if (System.IO.File.Exists(fileName))
+                SGO.Models.MySQL.SGO_Files FileData = new Models.MySQL.SGO_Files();
+                FileData.FileName = k.FileName;
+                FileData.Description = desc;
+                using (var ms = new MemoryStream())
                 {
-                    System.IO.File.Delete(fileName);
+                    k.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    //string s = Convert.ToBase64String(fileBytes);
+                    FileData.bin_file = fileBytes;
                 }
-
-                // Create new local file and copy contents of uploaded file
-                using (var localFile = System.IO.File.OpenWrite(fileName))
-                using (var uploadedFile = file.OpenReadStream())
-                {
-                    uploadedFile.CopyTo(localFile);
-                }
+                lsFile.Add(FileData);
             }
+            var JsonResult = lsFile.Select(k => new { k.FileName }).ToList();
+            SGO.ViewModels.FileStore.Files = lsFile;
 
-            ViewBag.Message = "Files successfully uploaded";
 
-            return View();
+            //if (files != null && files.Count > 0)
+            //{
+            //    string folderName = "Upload";
+            //    string webRootPath = _hostingEnvironment.WebRootPath;
+            //    string newPath = Path.Combine(webRootPath, folderName);
+            //    if (!Directory.Exists(newPath))
+            //    {
+            //        Directory.CreateDirectory(newPath);
+            //    }
+            //    foreach (IFormFile item in files)
+            //    {
+            //        if (item.Length > 0)
+            //        {
+            //            string fileName = ContentDispositionHeaderValue.Parse(item.ContentDisposition).FileName.Trim('"');
+            //            string fullPath = Path.Combine(newPath, fileName);
+            //            using (var stream = new FileStream(fullPath, FileMode.Create))
+            //            {
+            //                item.CopyTo(stream);
+            //            }
+            //        }
+            //    }
+            //    //return this.Content("Success");
+            //}
+
+            return Json(JsonResult);
         }
 
-        public IActionResult SaveFile(IFormFile[] files)
-        {
-                return View();
-        }
+
     }  
 }

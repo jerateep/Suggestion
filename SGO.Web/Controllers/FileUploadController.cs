@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SGO.ViewModels;
 
 namespace SGO.Web.Controllers
 {
     public class FileUploadController : Controller
     {
-        private IHostingEnvironment _hostingEnvironment;
-        public FileUploadController(IHostingEnvironment hostingEnvironment)
+        private readonly Data.MySQLContext _ent;
+        public FileUploadController(Data.MySQLContext ent)
         {
-            _hostingEnvironment = hostingEnvironment;
+            _ent = ent; ;
         }
         public void OnGet()
         {
@@ -24,51 +25,68 @@ namespace SGO.Web.Controllers
         public JsonResult OnPostUpload(List<IFormFile> files,string desc)
         {
             List<SGO.Models.MySQL.SGO_Files> lsFile = new List<Models.MySQL.SGO_Files>();
+            lsFile = FileStore.Files != null ? FileStore.Files : null;
+            int index = 1;
+            if (lsFile != null)
+            {
+                index = (from c in lsFile orderby c.Id descending select c.Id).FirstOrDefault();
+                index = index + 1;
+            }
+            else
+            {
+                lsFile = new List<Models.MySQL.SGO_Files>();
+            }
             foreach (var k in files)
             {
-                SGO.Models.MySQL.SGO_Files FileData = new Models.MySQL.SGO_Files();
-                FileData.FileName = k.FileName;
-                FileData.Description = desc;
+                byte[] fileBytes;
                 using (var ms = new MemoryStream())
                 {
                     k.CopyTo(ms);
-                    var fileBytes = ms.ToArray();
-                    //string s = Convert.ToBase64String(fileBytes);
-                    FileData.bin_file = fileBytes;
+                    fileBytes = ms.ToArray();
                 }
-                lsFile.Add(FileData);
+                lsFile.Add(new Models.MySQL.SGO_Files {
+                    Id = index,
+                    FileName = k.FileName,
+                    Description = desc,
+                    ContentType = k.ContentType,
+                    bin_file = fileBytes
+                });
+                index ++;
             }
-            var JsonResult = lsFile.Select(k => new { k.FileName,k.Description }).ToList();
+            var JsonResult = lsFile.Select(k => new {k.Id, k.FileName,k.Description }).ToList();
             SGO.ViewModels.FileStore.Files = lsFile;
-
-
-            //if (files != null && files.Count > 0)
-            //{
-            //    string folderName = "Upload";
-            //    string webRootPath = _hostingEnvironment.WebRootPath;
-            //    string newPath = Path.Combine(webRootPath, folderName);
-            //    if (!Directory.Exists(newPath))
-            //    {
-            //        Directory.CreateDirectory(newPath);
-            //    }
-            //    foreach (IFormFile item in files)
-            //    {
-            //        if (item.Length > 0)
-            //        {
-            //            string fileName = ContentDispositionHeaderValue.Parse(item.ContentDisposition).FileName.Trim('"');
-            //            string fullPath = Path.Combine(newPath, fileName);
-            //            using (var stream = new FileStream(fullPath, FileMode.Create))
-            //            {
-            //                item.CopyTo(stream);
-            //            }
-            //        }
-            //    }
-            //    //return this.Content("Success");
-            //}
-
             return Json(JsonResult);
         }
 
+        public JsonResult OnPostDelete(int id)
+        {
+            List<SGO.Models.MySQL.SGO_Files> lsFile = new List<Models.MySQL.SGO_Files>();
+            lsFile = FileStore.Files;
+            lsFile.RemoveAll(x => x.Id == id);
+            int index = 1;
+            foreach (var k in lsFile)
+            {
+                k.Id = index;
+                index++;
+            }
+            FileStore.Files = lsFile;
+            var JsonResult = lsFile.Select(k => new { k.Id, k.FileName, k.Description }).ToList();
+            SGO.ViewModels.FileStore.Files = lsFile;
+            return Json(JsonResult);
+        }
 
-    }  
+        public IActionResult OnPostDownload(int id,string sgoid)
+        {
+            var file = _ent.SGO_Files.SingleOrDefault(k => k.Id == id && k.SGO_ID == sgoid);
+            var path = file.FullPath;
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+            return File(memory, file.ContentType, Path.GetFileName(path));
+        }
+    }
 }

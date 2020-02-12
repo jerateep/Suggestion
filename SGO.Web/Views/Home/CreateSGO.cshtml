@@ -125,10 +125,32 @@
                         <th bgcolor="grey"><font color="white">#</font></th>
                         <th bgcolor="grey"><font color="white">ชื่อไฟล์</font></th>
                         <th bgcolor="grey"><font color="white">รายละเอียด</font></th>
-                        <th bgcolor="grey"><font color="white">Download</font></th>
+                        <th bgcolor="grey" colspan="1"><font color="white"></font></th>
+                        <th bgcolor="grey"><font color="white"></font></th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                    @if(Model.LsFils != null)
+                    {
+                        @foreach (var k in Model.LsFils)
+                        {
+                        <tr>
+                            <td>@k.Id</td>
+                            <td>@k.FileName</td>
+                            <td>@k.Description</td>
+                            @if (Model.Status_name != "New")
+                            {
+                                 <td><input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' /></td>
+                            }
+                            else
+                            {
+                                <td>_</td>
+                            }
+                            <td><input type='button' id='delfile' onClick='DeleteFile(@k.Id)' class='btn btn-danger' value='Delete' /></td>
+                        </tr>
+                        }
+                    }
+                </tbody>
             </table>
         </div>
         <div class="row marginbot-10">

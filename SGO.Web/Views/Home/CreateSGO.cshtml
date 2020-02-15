@@ -138,14 +138,23 @@
                             <td>@k.Id</td>
                             <td>@k.FileName</td>
                             <td>@k.Description</td>
-                            @if (Model.Status_name != "New")
-                            {
-                                 <td><input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' /></td>
-                            }
+                            @*@if (Model.Status_name != "New")
+                            {*@
+                        <td>
+                            @*<input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' />*@
+                            @Html.ActionLink(
+                                "Download",
+                                "DownloadFile",
+                                "Home",
+                                new { k.Id },
+                                new { @class = "btn btn-info" }
+                            )
+                        </td>
+                            @*}
                             else
                             {
                                 <td>_</td>
-                            }
+                            }*@
                             <td><input type='button' id='delfile' onClick='DeleteFile(@k.Id)' class='btn btn-danger' value='Delete' /></td>
                         </tr>
                         }

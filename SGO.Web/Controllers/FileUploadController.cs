@@ -75,18 +75,5 @@ namespace SGO.Web.Controllers
             return Json(JsonResult);
         }
 
-        public IActionResult OnPostDownload(int id,string sgoid)
-        {
-            var file = _ent.SGO_Files.SingleOrDefault(k => k.Id == id && k.SGO_ID == sgoid);
-            var path = file.FullPath;
-
-            var memory = new MemoryStream();
-            using (var stream = new FileStream(path, FileMode.Open))
-            {
-                stream.CopyTo(memory);
-            }
-            memory.Position = 0;
-            return File(memory, file.ContentType, Path.GetFileName(path));
-        }
     }
 }

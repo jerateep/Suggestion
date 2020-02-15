@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SGO.Models.MySQL
@@ -8,6 +9,7 @@ namespace SGO.Models.MySQL
     public class SGO_Files
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string SGO_ID { get; set; }
         public string FileName { get; set; }

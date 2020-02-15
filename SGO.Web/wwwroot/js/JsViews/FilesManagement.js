@@ -79,23 +79,3 @@ function DeleteFile(id) {
     $("#txtfiledesc").val('');
 }
 
-function Download(id) {
-    var fdata = new FormData();
-    fdata.append("id", id);
-    $.ajax({
-        type: "POST",
-        url: "/FileUpload/OnPostDownload?handler=Download",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("XSRF-TOKEN",
-                $('input:hidden[name="__RequestVerificationToken"]').val());
-        },
-        data: fdata,
-        contentType: false,
-        processData: false,
-        success: function (response) {
-            var Result = response;
-
-            
-        }
-    });
-}

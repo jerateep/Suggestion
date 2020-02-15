@@ -2,6 +2,37 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Microsoft.AspNetCore.Http.Features/3.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "3.1.1",
+          "System.IO.Pipelines": "4.7.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/3.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "System.IO.Pipelines/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/System.IO.Pipelines.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.IO.Pipelines.dll": {}
+        }
+      },
       "SGO.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -16,6 +47,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "3.1.1",
           "SGO.Models": "1.0.0"
         },
         "compile": {
@@ -28,6 +60,61 @@
     }
   },
   "libraries": {
+    "Microsoft.AspNetCore.Http.Features/3.1.1": {
+      "sha512": "Qkjtwq5tUwsVTCfhi/dsKxtcJ7ZognOcQWoZYIobUCN6keCr3ec6jRwpupUzk6PFNCFz9acltgBqU/lxOoSxvA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/3.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.3.1.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/3.1.1": {
+      "sha512": "tC5Eo5DbJA+NgiIw26R5c97N02tFvtfqstUxqb/4qXPLXI2IAIWSMUkh/1c9Gw59TT9hNkLwlmLErSPlHgyJVQ==",
+      "type": "package",
+      "path": "microsoft.extensions.primitives/3.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
+        "microsoft.extensions.primitives.3.1.1.nupkg.sha512",
+        "microsoft.extensions.primitives.nuspec"
+      ]
+    },
+    "System.IO.Pipelines/4.7.0": {
+      "sha512": "S0L7oyWyQdVzD+5xIvcC8h44Vc+FY+qXDCLRh2+YsuBDORNphcxNX+tXR6ByLMjQ/7jDaXxsYBF6qbAr7ZIaFw==",
+      "type": "package",
+      "path": "system.io.pipelines/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.0/System.IO.Pipelines.dll",
+        "lib/netcoreapp3.0/System.IO.Pipelines.xml",
+        "lib/netstandard1.3/System.IO.Pipelines.dll",
+        "lib/netstandard1.3/System.IO.Pipelines.xml",
+        "lib/netstandard2.0/System.IO.Pipelines.dll",
+        "lib/netstandard2.0/System.IO.Pipelines.xml",
+        "ref/netcoreapp2.0/System.IO.Pipelines.dll",
+        "ref/netcoreapp2.0/System.IO.Pipelines.xml",
+        "system.io.pipelines.4.7.0.nupkg.sha512",
+        "system.io.pipelines.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "SGO.Models/1.0.0": {
       "type": "project",
       "path": "../SGO.Models/SGO.Models.csproj",
@@ -46,21 +133,17 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jerateeps\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\jerateeps\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
+      "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
       "projectName": "SGO.WebService",
-      "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
+      "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
       "packagesPath": "C:\\Users\\jerateeps\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.WebService\\obj\\",
+      "outputPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\jerateeps\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -70,17 +153,16 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
-              "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj"
+            "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
+              "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj"
             },
-            "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj": {
-              "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj"
+            "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj"
             }
           }
         }

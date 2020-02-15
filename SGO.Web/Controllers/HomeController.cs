@@ -11,6 +11,7 @@ using SGO.Models;
 using SGO.Models.MySQL;
 using SGO.ViewModels;
 using SGO.Web.Data;
+using static System.Net.WebRequestMethods;
 
 namespace SGO.Web.Controllers
 {
@@ -21,7 +22,7 @@ namespace SGO.Web.Controllers
         {
             _entMy = entMy;
         }
-        public IActionResult CreateSGO() 
+        public IActionResult CreateSGO(string empid) 
         {
 
             SGOCreateVM Create = new SGOCreateVM();
@@ -50,36 +51,33 @@ namespace SGO.Web.Controllers
             return View(Create);
         }
 
-
         public IActionResult Save(SGOCreateVM SGO, List<string> lsSGO)
         {
             List<SGO_Files> LsFile = FileStore.Files;
             FileStore.Files = null;
-            string _FullPath = "";
+            string _FullPath = @"C:\Users\jerateeps\Desktop\Storefile\";
             if (!Directory.Exists(_FullPath))
             {
                 Directory.CreateDirectory(_FullPath);
             }
-            foreach (IFormFile item in LsFile)
+
+            foreach (var k in LsFile)
             {
-                if (item.Length > 0)
+                string Result = FilesMng.SaveFile(_FullPath + "\\" +k.FileName, k.bin_file);
+                if (Result != "OK")
                 {
-                    string fileName = item.FileName;
-                    string fullPath = Path.Combine(_FullPath, fileName);
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        item.CopyTo(stream);
-                    }
+                    break;
                 }
             }
             foreach (var k in LsFile)
             {
                 _entMy.SGO_Files.Add(new SGO_Files
                 {
+                    SGO_ID = SGO.SGO_ID,
                     FileName = k.FileName,
                     Description = k.Description,
                     ContentType = k.ContentType,
-                    FullPath = _FullPath,
+                    FullPath = _FullPath + "\\" + k.FileName,
                 });
             }
             _entMy.SaveChanges();
@@ -91,8 +89,16 @@ namespace SGO.Web.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult DownloadFile(int Id)
+        {
+            var Getall = FileStore.Files;
+            var file = Getall.SingleOrDefault(k => k.Id == Id);
+            string fullpath = @"C:\Users\jerateeps\Downloads\" + file.FileName;
+            byte[] fileBytes = System.IO.File.ReadAllBytes(fullpath);
+            // string fileName = "test";
+            return File(fileBytes, file.ContentType, file.FileName);
+        }
+        public IActionResult MainSGO()
         {
             return View();
         }

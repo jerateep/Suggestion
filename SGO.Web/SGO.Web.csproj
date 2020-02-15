@@ -6650,6 +6650,10 @@
     <TypeScriptCompile Include="wwwroot\AdminLTE\bower_components\moment\moment.d.ts" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES2019</TypeScriptTarget>
     <TypeScriptJSXEmit>React</TypeScriptJSXEmit>

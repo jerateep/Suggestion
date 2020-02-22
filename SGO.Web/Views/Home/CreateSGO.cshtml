@@ -87,19 +87,19 @@
         <div class="form-group margintop-10">
             <div class="pull-left">
                 <strong>สภาพปัจจุบัน</strong>
-                <textarea asp-for="Detail_Now" class="form-control" ></textarea>
+                <textarea asp-for="Detail_Now" class="form-control"></textarea>
                 <span asp-validation-for="Detail_Now" class="text-danger"></span>
             </div>
             <div class="pull-right">
                 <strong>ข้อเสนอแนะปรับปรุงแก้ไขใหม่</strong>
-                <textarea asp-for="Detail_Future" class="form-control" ></textarea>
+                <textarea asp-for="Detail_Future" class="form-control"></textarea>
                 <span asp-validation-for="Detail_Future" class="text-danger"></span>
             </div>
         </div>
         <div class="row"></div>
         <div class="form-group">
             <strong>ผลที่คาดว่าจะได้รับ</strong>
-            <textarea asp-for="Detail_Result" class="form-control" ></textarea>
+            <textarea asp-for="Detail_Result" class="form-control"></textarea>
             <span asp-validation-for="Detail_Result" class="text-danger"></span>
         </div>
         <div class="row marginbot-10">
@@ -112,7 +112,7 @@
                 <input type="file" id="fUpload" name="files" class="form-control" />
             </div>
             <div class="pull-right">
-                <strong>รายละเอียด:</strong>&nbsp;&nbsp;&nbsp;<input type="text" id="txtfiledesc"  width="200"/>&nbsp;&nbsp;&nbsp;
+                <strong>รายละเอียด:</strong>&nbsp;&nbsp;&nbsp;<input type="text" id="txtfiledesc" width="200" />&nbsp;&nbsp;&nbsp;
                 <input type="button" id="btnUpload" value="Upload" class="btn btn-success" formmethod="post" formenctype="multipart/form-data" />
             </div>
 
@@ -130,33 +130,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(Model.LsFils != null)
+                    @if (Model.LsFils != null)
                     {
                         @foreach (var k in Model.LsFils)
                         {
-                        <tr>
-                            <td>@k.Id</td>
-                            <td>@k.FileName</td>
-                            <td>@k.Description</td>
-                            @*@if (Model.Status_name != "New")
-                            {*@
-                        <td>
-                            @*<input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' />*@
-                            @Html.ActionLink(
-                                "Download",
-                                "DownloadFile",
-                                "Home",
-                                new { k.Id },
-                                new { @class = "btn btn-info" }
-                            )
-                        </td>
-                            @*}
-                            else
-                            {
-                                <td>_</td>
-                            }*@
-                            <td><input type='button' id='delfile' onClick='DeleteFile(@k.Id)' class='btn btn-danger' value='Delete' /></td>
-                        </tr>
+                            <tr>
+                                <td>@k.Id</td>
+                                <td>@k.FileName</td>
+                                <td>@k.Description</td>
+                                @*@if (Model.Status_name != "New")
+                                {*@
+                                <td>
+                                    @*<input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' />*@
+                                    @Html.ActionLink(
+                                        "Download",
+                                        "DownloadFile",
+                                        "Home",
+                                        new { k.Id },
+                                        new { @class = "btn btn-info" }
+                                    )
+                                </td>
+                                @*}
+                                else
+                                {
+                                    <td>_</td>
+                                }*@
+                                <td><input type='button' id='delfile' onClick='DeleteFile(@k.Id)' class='btn btn-danger' value='Delete' /></td>
+                            </tr>
                         }
                     }
                 </tbody>
@@ -206,6 +206,98 @@
                 <strong>@k.App_pers_id</strong>
                 index++;
             }
+        </div>
+        <div class="row marginbot-10">
+            <div class="col-md-12 col-xs-12" style="background-color:dodgerblue"><font color="white">สำหรับผู้ตรวจสอบข้อมูล</font></div>
+        </div>
+        ฒิพฬ
+        <div id="FinSGO">
+            @{
+                var HeaderFS = ViewData["HeaderFS"];
+                int indexFS = Convert.ToInt32(ViewBag.indexFS) + 1;
+                int Scorels = 0;
+            }
+
+            <table id="tblFS" class="table table-bordered table-condensed table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th align="center" bgcolor="grey" colspan='@indexFS'><font color="white">FINANCIAL SUGGESTION (ผลลัพธ์ที่คำนวณเป็นเงินได้)</font></th>
+                    </tr>
+                    <tr>
+                        <th align="center" bgcolor="grey"></th>
+                        @foreach (var h in HeaderFS as IEnumerable<string>)
+                        {
+                            <th align="center" bgcolor="grey">@h</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (int t in ViewData["topicFS"] as IEnumerable<int>)
+                    {
+                        <tr>
+                            <th>@Model.TopicFs.Where(d => d.topic_id == t).Select(s => s.topic).FirstOrDefault()</th>
+                            @foreach (var k in Model.TopicFs.Where(s => s.topic_id == t))
+                            {
+                                <th>
+                                    <input asp-for="score[Scorels].choice_id" type="radio" value="@k.choie_id" /> @k.choice_name
+                                </th>
+                            }
+                        </tr>
+                        Scorels++;
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div id="NonFinSGO">
+            @{
+                var HeaderNFS = ViewData["HeaderNFS"];
+                int indexNFS = Convert.ToInt32(ViewBag.indexNFS) + 1;
+                int ScoreNls = 0;
+                var topic = "";
+            }
+
+            <p>NON FINANCIAL SUGGESTION</p>
+
+            <table id="tblNFS" class="table table-bordered table-condensed table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th bgcolor="grey" rowspan="2">คะแนน <br /> หัวข้อ</th>
+                        @foreach (var h in HeaderNFS as IEnumerable<string>)
+                        {
+                            <th bgcolor="grey" rowspan="2">@h</th>
+                        }
+                        <th bgcolor="grey" colspan="4">ผลการประเมิน</th>
+                    </tr>
+                    <tr>
+                        <th bgcolor="grey">1</th>
+                        <th bgcolor="grey">2</th>
+                        <th bgcolor="grey">3</th>
+                        <th bgcolor="grey">X</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (int t in ViewData["topicNFS"] as IEnumerable<int>)
+                    {
+                        <tr>
+                            <th>@Model.TopicNFs.Where(d => d.topic_id == t).Select(s => s.topic).FirstOrDefault()</th>
+                            @foreach (var k in Model.TopicNFs.Where(s => s.topic_id == t))
+                            {
+                                topic = k.topic;
+                                <th>
+                                    @*<input asp-for="score[ScoreNls].choice_id" type="radio" value="@k.choie_id" /> @k.choice_name*@
+                                    @k.choice_name
+                                </th>
+                            }
+
+                            @for (int i = 0; i < 3; i++)
+                            {
+                                <th><input style="width: 40px;" type="number" name="NFS_@i" /></th>
+                            }
+                            <th><strong>00</strong></th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
         <div class="form-group">
             <input asp-action="Save" type="submit" value="Create" class="btn btn-primary" />

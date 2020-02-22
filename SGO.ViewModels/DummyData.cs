@@ -106,6 +106,86 @@ namespace SGO.ViewModels
             lsData.Add(Doc1);
             return lsData;
         }
+        public List<SGO_Topic> GetTopic()
+        {
+            List<SGO_Topic> lsData = new List<SGO_Topic>
+            {
+                new SGO_Topic{ topic_id = 1, topic = "จำนวน ชม. (คิดต่อปฎิทิน)", group = "FS", status = "A"},
+                new SGO_Topic{ topic_id = 2, topic = "รางวัล (บาท)", group = "FS", status = "A"},
+                new SGO_Topic{ topic_id = 3, topic = "รางวัลแสตมป์ไอเดีย (ดวง)", group = "FS", status = "A"},
+                new SGO_Topic{ topic_id = 4, topic = "ความคิดริเริ่ม / ความใหม่", group = "NFS", status = "A"},
+                new SGO_Topic{ topic_id = 5, topic = "ความพยายาม / วิจัย / ค้นคว้า / ทดลอง", group = "NFS", status = "A"},
+                new SGO_Topic{ topic_id = 6, topic = "ความสมบูรณ์ และ การประยุกต์ใช้", group = "NFS", status = "A"},
+                new SGO_Topic{ topic_id = 7, topic = "คุณภาพ", group = "NFS", status = "A"},
+                new SGO_Topic{ topic_id = 8, topic = "ความปลอดภัย หรือ สุขอนามัย", group = "NFS", status = "A"},
+                new SGO_Topic{ topic_id = 9, topic = "ประสิทธิภาพ", group = "NFS", status = "A"},
+            };
+            return lsData;
+        }
+        public List<SGO_TopicChoice> GetTopicDetails()
+        {
 
+            List<SGO_TopicChoice> lsData = new List<SGO_TopicChoice>
+            {
+                new SGO_TopicChoice{ choie_id = 1, choice_row = "A", choice_name = "5000 UP ", topic_id = 1, status = "A"},
+                new SGO_TopicChoice{ choie_id = 2, choice_row = "B", choice_name = "3500 - 4999", topic_id = 1, status = "A"},
+                new SGO_TopicChoice{ choie_id = 3, choice_row = "C", choice_name = "2000 - 3499", topic_id = 1, status = "A"},
+                new SGO_TopicChoice{ choie_id = 4, choice_row = "D", choice_name = "1000 - 1999", topic_id = 1, status = "A"},
+                new SGO_TopicChoice{ choie_id = 5, choice_row = "E", choice_name = "500 - 999", topic_id = 1, status = "A"},
+                new SGO_TopicChoice{ choie_id = 6, choice_row = "F", choice_name = "100 - 499", topic_id = 1, status = "A"},
+                new SGO_TopicChoice{ choie_id = 7, choice_row = "G", choice_name = "30 - 99", topic_id = 1, status = "A"},
+                new SGO_TopicChoice{ choie_id = 8, choice_row = "H", choice_name = "10 - 29", topic_id = 1, status = "A"},
+                new SGO_TopicChoice{ choie_id = 9, choice_row = "I", choice_name = "1 - 9", topic_id = 1, status = "A"},
+
+                new SGO_TopicChoice{ choie_id = 10, choice_row = "A", choice_name = "1,500", topic_id = 2, status = "A"},
+                new SGO_TopicChoice{ choie_id = 11, choice_row = "B", choice_name = "1,000", topic_id = 2, status = "A"},
+                new SGO_TopicChoice{ choie_id = 12, choice_row = "C", choice_name = "800", topic_id = 2, status = "A"},
+                new SGO_TopicChoice{ choie_id = 13, choice_row = "D", choice_name = "500", topic_id = 2, status = "A"},
+                new SGO_TopicChoice{ choie_id = 14, choice_row = "E", choice_name = "300", topic_id = 2, status = "A"},
+                new SGO_TopicChoice{ choie_id = 15, choice_row = "F", choice_name = "150", topic_id = 2, status = "A"},
+                new SGO_TopicChoice{ choie_id = 16, choice_row = "G", choice_name = "70", topic_id = 2, status = "A"},
+                new SGO_TopicChoice{ choie_id = 17, choice_row = "H", choice_name = "60", topic_id = 2, status = "A"},
+                new SGO_TopicChoice{ choie_id = 18, choice_row = "I", choice_name = "50", topic_id = 2, status = "A"},
+                
+                new SGO_TopicChoice{ choie_id = 19, choice_row = "A", choice_name = "75", topic_id = 3, status = "A"},
+                new SGO_TopicChoice{ choie_id = 20, choice_row = "B", choice_name = "50", topic_id = 3, status = "A"},  
+                new SGO_TopicChoice{ choie_id = 21, choice_row = "C", choice_name = "40", topic_id = 3, status = "A"},  
+                new SGO_TopicChoice{ choie_id = 22, choice_row = "D", choice_name = "25", topic_id = 3, status = "A"},  
+                new SGO_TopicChoice{ choie_id = 23, choice_row = "E", choice_name = "15", topic_id = 3, status = "A"},  
+                new SGO_TopicChoice{ choie_id = 24, choice_row = "F", choice_name = "8", topic_id = 3, status = "A"},   
+                new SGO_TopicChoice{ choie_id = 25, choice_row = "G", choice_name = "4", topic_id = 3, status = "A"},   
+                new SGO_TopicChoice{ choie_id = 26, choice_row = "H", choice_name = "3", topic_id = 3, status = "A"},   
+                new SGO_TopicChoice{ choie_id = 27, choice_row = "I", choice_name = "2", topic_id = 3, status = "A"},
+
+                new SGO_TopicChoice{ choie_id = 28, choice_row = "5", choice_name = "ดีมาก แปลกใหม่", topic_id = 4, status = "A"},
+                new SGO_TopicChoice{ choie_id = 29, choice_row = "4", choice_name = "พัฒนาจากแนวคิดเดิม", topic_id = 4, status = "A"},
+                new SGO_TopicChoice{ choie_id = 30, choice_row = "3", choice_name = "พัฒนาจากแนวเดิมพอควร", topic_id = 4, status = "A"}, 
+                new SGO_TopicChoice{ choie_id = 31, choice_row = "2", choice_name = "เกิดขึ้นเองแบบง่ายๆ", topic_id = 4, status = "A"},
+                new SGO_TopicChoice{ choie_id = 32, choice_row = "1", choice_name = "ลอกเลียนแบบและปรับแต่ง", topic_id = 4, status = "A"}, 
+                new SGO_TopicChoice{ choie_id = 33, choice_row = "0", choice_name = "ลอกเลียนแบบโดยไม่มีการพัฒนา", topic_id = 4, status = "A"},
+
+                new SGO_TopicChoice{ choie_id = 34, choice_row = "5", choice_name = "มากที่สุด", topic_id = 5, status = "A"},
+                new SGO_TopicChoice{ choie_id = 35, choice_row = "4", choice_name = "มาก", topic_id = 5, status = "A"},
+                new SGO_TopicChoice{ choie_id = 36, choice_row = "3", choice_name = "ค่อนข้างมาก", topic_id = 5, status = "A"},
+                new SGO_TopicChoice{ choie_id = 37, choice_row = "2", choice_name = "ปานกลาง", topic_id = 5, status = "A"},
+                new SGO_TopicChoice{ choie_id = 38, choice_row = "1", choice_name = "เล็กน้อย", topic_id = 5, status = "A"},
+                new SGO_TopicChoice{ choie_id = 39, choice_row = "0", choice_name = "ไม่มี", topic_id = 5, status = "A"},
+
+                new SGO_TopicChoice{ choie_id = 40, choice_row = "5", choice_name = "ใช้ได้กับงาน / หน่วยงานอื่น", topic_id = 6, status = "A"},
+                new SGO_TopicChoice{ choie_id = 41, choice_row = "4", choice_name = "ใช้ปฏิบัติได้แน่นอน", topic_id = 6, status = "A"},
+                new SGO_TopicChoice{ choie_id = 42, choice_row = "3", choice_name = "ปรับแต่งเล็กน้อยก่อนใช้", topic_id = 6, status = "A"},
+                new SGO_TopicChoice{ choie_id = 43, choice_row = "2", choice_name = "ปรับแต่งพอสมควรก่อนใช้", topic_id = 6, status = "A"},
+                new SGO_TopicChoice{ choie_id = 44, choice_row = "1", choice_name = "ปรับแต่งมากก่อนใช้", topic_id = 6, status = "A"},
+                new SGO_TopicChoice{ choie_id = 45, choice_row = "0", choice_name = "ปรับแต่งทั้งหมด", topic_id = 6, status = "A"},
+
+                new SGO_TopicChoice{ choie_id = 46, choice_row = "5", choice_name = "คุณภาพดีเยี่ยม", topic_id = 7, status = "A"},
+                new SGO_TopicChoice{ choie_id = 47, choice_row = "4", choice_name = "คุณภาพดีขึ้นมาก", topic_id = 7, status = "A"},
+                new SGO_TopicChoice{ choie_id = 48, choice_row = "3", choice_name = "คุณภาพดีขึ้นพอสมควร", topic_id = 7, status = "A"},
+                new SGO_TopicChoice{ choie_id = 49, choice_row = "2", choice_name = "คุณภาพดีขึ้นเล็กน้อย", topic_id = 7, status = "A"},
+                new SGO_TopicChoice{ choie_id = 50, choice_row = "1", choice_name = "คุณภาพเหมือนเดิม", topic_id = 7, status = "A"},
+                new SGO_TopicChoice{ choie_id = 51, choice_row = "0", choice_name = "ไม่เกี่ยวข้องกับคุณภาพ", topic_id = 7, status = "A"},
+            };
+            return lsData;
+        }
     }
 }

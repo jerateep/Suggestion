@@ -22,11 +22,25 @@ namespace SGO.Web.Controllers
         {
             _entMy = entMy;
         }
+        public IActionResult MainSGO()
+        {
+            var CookieUser = Request.Cookies["USER"];
+            if (CookieUser != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+        }
         public IActionResult CreateSGO(string empid) 
         {
+            string userName = User.Identity.Name;
 
             SGOCreateVM Create = new SGOCreateVM();
-            Models.MySQL.SGO_HEAD Data = new DummyData().GetHead().SingleOrDefault();
+            SGO_HEAD Data = new DummyData().GetHead().SingleOrDefault();
             Create.SGO_ID = Data.SGO_ID;
             Create.Status_name = "New";
             Create.cod_Requester = Data.cod_Requester;
@@ -38,7 +52,7 @@ namespace SGO.Web.Controllers
             Create.department = _entMy.SGO_Department.ToList();
             Create.SGOType = _entMy.SGO_Type.Where(x => x.Cod_group == "SGO" && x.SGOType_Status == "A").ToList();
             Create.SHIFT = _entMy.SGO_SHIFT.ToList();
-            Create.Approver = new List<Models.MySQL.SGO_Approver>{ new Models.MySQL.SGO_Approver { App_pers_id = "B-1143",} };
+            Create.Approver = new List<SGO_Approver>{ new SGO_Approver { App_pers_id = "B-1143",} };
             Create.StatusAppMng = _entMy.SGO_Status.Where(k => k.Cod_group == "Approved").ToList();
             if (Create.Status_name == "New")
             {
@@ -48,9 +62,40 @@ namespace SGO.Web.Controllers
             {
                //from query database
             }
+            var topic = new DummyData().GetTopic();
+            var choice = new DummyData().GetTopicDetails();
+            //FS
+            Create.TopicFs = (from c in choice
+                      join t in topic.Where(g => g.@group == "FS") on c.topic_id equals t.topic_id
+                      select new FSTableVM
+                      {
+                          topic = t.topic,
+                          topic_id = c.topic_id,
+                          choice_row = c.choice_row,
+                          choie_id = c.choie_id,
+                          choice_name = c.choice_name
+                      }).ToList();
+            var HeaderFS = Create.TopicFs.Select(s => s.choice_row).Distinct();
+            ViewData["HeaderFS"] = HeaderFS;
+            ViewData["topicFS"] = Create.TopicFs.Select(s => s.topic_id).Distinct();
+            ViewBag.indexFS = HeaderFS.Count();
+            //NonFS
+            Create.TopicNFs = (from c in choice
+                              join t in topic.Where(g => g.@group == "NFS") on c.topic_id equals t.topic_id
+                              select new FSTableVM
+                              {
+                                  topic = t.topic,
+                                  topic_id = c.topic_id,
+                                  choice_row = c.choice_row,
+                                  choie_id = c.choie_id,
+                                  choice_name = c.choice_name
+                              }).ToList();
+            var HeaderNFS = Create.TopicNFs.Select(s => s.choice_row).Distinct();
+            ViewData["HeaderNFS"] = HeaderNFS;
+            ViewData["topicNFS"] = Create.TopicNFs.Select(s => s.topic_id).Distinct();
+            ViewBag.indexFS = HeaderFS.Count();
             return View(Create);
         }
-
         public IActionResult Save(SGOCreateVM SGO, List<string> lsSGO)
         {
             List<SGO_Files> LsFile = FileStore.Files;
@@ -83,12 +128,6 @@ namespace SGO.Web.Controllers
             _entMy.SaveChanges();
             return View();
         }
-
-
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult DownloadFile(int Id)
         {
             var Getall = FileStore.Files;
@@ -97,10 +136,6 @@ namespace SGO.Web.Controllers
             byte[] fileBytes = System.IO.File.ReadAllBytes(fullpath);
             // string fileName = "test";
             return File(fileBytes, file.ContentType, file.FileName);
-        }
-        public IActionResult MainSGO()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

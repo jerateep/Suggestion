@@ -15,5 +15,8 @@ namespace SGO.ViewModels
         public List<SGO_SHIFT> SHIFT { get; set; }
         public List<SGO_Status> StatusAppMng { get; set; }
         public List<SGO_Files> LsFils { get; set; }
+        public List<FSTableVM> TopicFs { get; set; }
+        public List<FSTableVM> TopicNFs { get; set; }
+        public List<SGO_Score> score { get; set; }
     }
 }

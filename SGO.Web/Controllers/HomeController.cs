@@ -93,7 +93,7 @@ namespace SGO.Web.Controllers
             var HeaderNFS = Create.TopicNFs.Select(s => s.choice_row).Distinct();
             ViewData["HeaderNFS"] = HeaderNFS;
             ViewData["topicNFS"] = Create.TopicNFs.Select(s => s.topic_id).Distinct();
-            ViewBag.indexFS = HeaderFS.Count();
+            ViewBag.indexNFS = HeaderNFS.Count();
             return View(Create);
         }
         public IActionResult Save(SGOCreateVM SGO, List<string> lsSGO)

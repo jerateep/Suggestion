@@ -3,190 +3,210 @@
 @{
     ViewData["Title"] = "CreateSGO";
 }
-
+<link href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+<link href="~/css/CustomCreateSGO.css" rel="stylesheet" />
 <div class="box-header with-border">
-    <strong><font color="red"> Create  Suggestion.</font></strong> > Team Approved > Manager Approved > Accounting Approved
-</div>
 
+</div>
 <div class="col-lg-12">
     <form asp-action="CreateSGO">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="row margintop-10">
-            <div class="col-lg-7 pull-left">
-                <div class="row marginbot-10">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <img src="~/img/company_logo.jpg" width="50px" />
-                    </div>
+        <!--Header Logo, Form name, SGO Number-->
+        <div id="header">
+            <div class="row">
+                <div id="Subheader" class="col-sm-4">
+                    <img src="~/img/company_logo.jpg" width="50px" />
                 </div>
-                <div class="row">
-                    <div>
-                        <div class="col-lg-12">
-                            <strong>ลงทะเบียนเลขที่ :</strong>
-                            <span>@Model.SGO_ID </span>
-                            <br />
-                            <strong>สถานะเอกสาร : @Model.Status_name</strong>
-                            <br />
-                            <strong>วันที่ :</strong>
-                            <span>@Model.dtm_Request</span>
-                            <div class="row padding-top">
-                                <div class="col-lg-5 right padding-top">
-                                    <strong>เสนอปรับปรุง :</strong>
-                                    @Html.DropDownListFor(x => x.Dep_ID_Request, new SelectList(Model.department, "dep_id", "dep_name"), "-- เลือกหน่วยงาน --", new { @class = "form-control" })
-                                </div>
-                                <div class="col-lg-7">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                <div id="Subheader" class="col-sm-4">
+                    <strong>ข้อเสนอแนะเพื่อการปรับปรุง</strong>
                 </div>
-            </div>
-            <div class="col-lg-3 pull-right">
-                <div class="row">
-                    <div class="padding-top">
-                        <strong>รหัสพนักงาน:</strong>
-                        <span>@Model.cod_Requester</span>
-                        <br />
-                        <strong>ชื่อ: </strong>
-                        <span>@Model.Fname  @Model.LName</span>
-                        <br />
-                        <strong>หน่วยงาน :</strong>
-                        <span>@Model.Dep_name / @Model.Dep_Section</span>
-                        <br />
-                        <strong>โทร:</strong><br />
-                        <span><input type="text" asp-for="Phone" /></span>
-                        <br />
-                        <strong>กะงาน: </strong>
-                        <span> @Html.DropDownListFor(x => x.Shift, new SelectList(Model.SHIFT, "Shift_id", "Shift_Time"), "-- เลือกกะงาน --", new { @class = "form-control", @style = "width: 150px;" })</span>
-                        <br />
-                    </div>
+                <div id="Subheader" class="col-sm-4">
+                    <strong>ลงทะเบียนเลขที่ : @Model.SGO_ID</strong><br />
+                    <strong>สถานะเอกสาร : @Model.Status_name</strong>
                 </div>
             </div>
         </div>
-        <div class="row marginbot-10">
-            <div class="col-md-12 col-xs-12" style="background-color:dodgerblue"><strong><font color="white">รายละเอียด</font></strong></div>
-        </div>
-
-        <div class="form-group">
+        <!--Header Logo, Form name, SGO Number-->
+        <br />
+        <!--Step 1 Employee-->
+        <div id="Employee">
+            <strong>ขั้นตอนที่ 1: สำหรับพนักงาน (EMPLOYEE)</strong><br />
+            <!--Row 1-->
+            <div class="row">
+                <div class="col-sm-3">
+                    <strong>ชื่อ </strong>   <u>@Model.Fname</u>
+                </div>
+                <div class="col-sm-2">
+                    <strong>สกุล </strong> <u>@Model.LName</u>
+                </div>
+                <div class="col-sm-3">
+                    <strong>รหัส </strong> <u>@Model.cod_Requester</u>
+                </div>
+                <div class="col-sm-4" align="right">
+                    <strong>โทรศัพท์ </strong> <input type="text" asp-for="Phone" />
+                </div>
+            </div>
+            <!--Row 1-->
+            <div><br /></div>
+            <!--Row 2-->
+            <div class="row">
+                <div class="col-sm-3">
+                    <strong>แผนก </strong> <u>@Model.Dep_Section</u>
+                </div>
+                <div class="col-sm-2">
+                    <strong>ฝ่าย </strong> <u>@Model.Dep_name</u>
+                </div>
+                <div class="col-sm-3">
+                    <strong>วันที่ </strong> <u>@Model.dtm_Request</u>
+                </div>
+                <div class="col-sm-4" align="right">
+                    <strong>กะงาน </strong> @Html.DropDownListFor(x => x.Shift, new SelectList(Model.SHIFT, "Shift_id", "Shift_Time"), "เลือกกะงาน", new { @class = "form-control", @style = "width: 150px;" })
+                </div>
+            </div>
+            <!--Row 2-->
             <strong>เรื่อง</strong>
             <input asp-for="Subject" class="form-control" />
             <span asp-validation-for="Subject" class="text-danger"></span>
+            <hr />
         </div>
-        <div class="form-group">
-            <strong>ประเภทการเสนอแนะ</strong><br />
-            <table>
-                <tr>
-                    @for (int i = 0; i < Model.SGOType.Count; i++)
-                    {
-                        <td><input name="lsSGO" type="checkbox" value="@Model.SGOType[i].SGOType_ID" /> @Model.SGOType[i].SGOType_name </td>
-                        <td>&nbsp;&nbsp;</td>
-                    }
-                </tr>
-            </table>
-        </div>
-        <div class="form-group margintop-10">
-            <div class="pull-left">
-                <strong>สภาพปัจจุบัน</strong>
-                <textarea asp-for="Detail_Now" class="form-control"></textarea>
-                <span asp-validation-for="Detail_Now" class="text-danger"></span>
-            </div>
-            <div class="pull-right">
-                <strong>ข้อเสนอแนะปรับปรุงแก้ไขใหม่</strong>
-                <textarea asp-for="Detail_Future" class="form-control"></textarea>
-                <span asp-validation-for="Detail_Future" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row"></div>
-        <div class="form-group">
-            <strong>ผลที่คาดว่าจะได้รับ</strong>
-            <textarea asp-for="Detail_Result" class="form-control"></textarea>
-            <span asp-validation-for="Detail_Result" class="text-danger"></span>
-        </div>
-        <div class="row marginbot-10">
-            <div class="col-md-12 col-xs-12" style="background-color:dodgerblue"><strong><font color="white">หมายเหตุ</font></strong></div>
-        </div>
+        <!--Step 1 Employee-->
         <br />
-
-        <div class="form-group">
-            <div class="pull-left">
-                <input type="file" id="fUpload" name="files" class="form-control" />
+        <!--ประเภทข้อเสนอแนะ-->
+        <div id="TypeSGO">
+            <div class="row">
+                <div class="col-sm-3"><strong>ประเภทข้อเสนอแนะ</strong></div>
+                <div class="col-sm-4">
+                    <strong>เสนอปรับปรุง</strong> @Html.DropDownListFor(x => x.Dep_ID_Request, new SelectList(Model.department, "dep_id", "dep_name"), "หน่วยงาน", new { @class = "form-control" })
+                </div>
             </div>
-            <div class="pull-right">
-                <strong>รายละเอียด:</strong>&nbsp;&nbsp;&nbsp;<input type="text" id="txtfiledesc" width="200" />&nbsp;&nbsp;&nbsp;
-                <input type="button" id="btnUpload" value="Upload" class="btn btn-success" formmethod="post" formenctype="multipart/form-data" />
-            </div>
-
-        </div>
-        <br />
-        <div class="form-group">
-            <table id="tblfile" class="table table-bordered table-condensed table-hover table-striped">
-                <thead>
+            <!--ตัวเลือกประเภท-->
+            <div class="row">
+                <strong>เลือกประเภทของการเสนอแนะได้เพียง 1 ประเภท</strong>
+                <table>
                     <tr>
-                        <th bgcolor="grey"><font color="white">#</font></th>
-                        <th bgcolor="grey"><font color="white">ชื่อไฟล์</font></th>
-                        <th bgcolor="grey"><font color="white">รายละเอียด</font></th>
-                        <th bgcolor="grey" colspan="1"><font color="white"></font></th>
-                        <th bgcolor="grey"><font color="white"></font></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model.LsFils != null)
-                    {
-                        @foreach (var k in Model.LsFils)
+                        @for (int i = 0; i < Model.SGOType.Count; i++)
                         {
-                            <tr>
-                                <td>@k.Id</td>
-                                <td>@k.FileName</td>
-                                <td>@k.Description</td>
-                                @*@if (Model.Status_name != "New")
+                            <td><input name="lsSGO" type="radio" value="@Model.SGOType[i].SGOType_ID" /> @Model.SGOType[i].SGOType_name </td>
+                            <td>&nbsp;&nbsp;</td>
+                        }
+                    </tr>
+                </table>
+            </div>
+            <!--ตัวเลือกประเภท-->
+            <!--สภาพปัจจุบัน / ข้อเสนอ-->
+            <div class="row">
+                <div class="pull-left">
+                    <strong>สภาพปัจจุบัน</strong>
+                    <textarea asp-for="Detail_Now" class="form-control"></textarea>
+                    <span asp-validation-for="Detail_Now" class="text-danger"></span>
+                </div>
+                <div class="pull-right">
+                    <strong>ข้อเสนอแนะปรับปรุงแก้ไขใหม่</strong>
+                    <textarea asp-for="Detail_Future" class="form-control"></textarea>
+                    <span asp-validation-for="Detail_Future" class="text-danger"></span>
+                </div>
+            </div>
+            <!--สภาพปัจจุบัน / ข้อเสนอ-->
+            <!--หมายเหต-->
+            <div class="form-group">
+                <strong>ผลที่คาดว่าจะได้รับ</strong>
+                <textarea asp-for="Detail_Result" class="form-control"></textarea>
+                <span asp-validation-for="Detail_Result" class="text-danger"></span>
+            </div>
+            <!--หมายเหต-->
+        </div>
+        <!--ประเภทข้อเสนอแนะ-->
+        <br />
+        <!--ไฟล์แนบ-->
+        <div id="file">
+            <!--Button upload & text description-->
+            <div class="form-group">
+                <div class="pull-left">
+                    <input type="file" id="fUpload" name="files" class="form-control" />
+                </div>
+                <div class="pull-right">
+                    <strong>รายละเอียด:</strong>&nbsp;&nbsp;&nbsp;<input type="text" id="txtfiledesc" width="200" />&nbsp;&nbsp;&nbsp;
+                    <input type="button" id="btnUpload" value="Upload" class="btn btn-success" formmethod="post" formenctype="multipart/form-data" />
+                </div>
+            </div>
+            <!--Button upload & text description-->
+            <br />
+            <!--table show file-->
+            <div class="form-group">
+                <table id="tblfile" class="table table-bordered table-condensed table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th bgcolor="grey"><font color="white">#</font></th>
+                            <th bgcolor="grey"><font color="white">ชื่อไฟล์</font></th>
+                            <th bgcolor="grey"><font color="white">รายละเอียด</font></th>
+                            <th bgcolor="grey" colspan="1"><font color="white"></font></th>
+                            <th bgcolor="grey"><font color="white"></font></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.LsFils != null)
+                        {
+                            @foreach (var k in Model.LsFils)
+                            {
+                                <tr>
+                                    <td>@k.Id</td>
+                                    <td>@k.FileName</td>
+                                    <td>@k.Description</td>
+                                    @*@if (Model.Status_name != "New")
                                 {*@
-                                <td>
-                                    @*<input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' />*@
-                                    @Html.ActionLink(
-                                        "Download",
-                                        "DownloadFile",
-                                        "Home",
-                                        new { k.Id },
-                                        new { @class = "btn btn-info" }
-                                    )
-                                </td>
-                                @*}
+                                    <td>
+                                        @*<input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' />*@
+                                        @Html.ActionLink(
+                                            "Download",
+                                            "DownloadFile",
+                                            "Home",
+                                            new { k.Id },
+                                            new { @class = "btn btn-info" }
+                                        )
+                                    </td>
+                                    @*}
                                 else
                                 {
                                     <td>_</td>
                                 }*@
-                                <td><input type='button' id='delfile' onClick='DeleteFile(@k.Id)' class='btn btn-danger' value='Delete' /></td>
-                            </tr>
+                                    <td><input type='button' id='delfile' onClick='DeleteFile(@k.Id)' class='btn btn-danger' value='Delete' /></td>
+                                </tr>
+                            }
                         }
-                    }
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            <!--table show file-->
         </div>
-        <div class="row marginbot-10">
-            <div class="col-md-12 col-xs-12" style="background-color:dodgerblue"><font color="white">สมาชิก</font></div>
-        </div>
+        <!--ไฟล์แนบ-->
         <br />
-        <div class="form-group">
+        <!--สมาชิก-->
+        <div id="member">
+            <strong>สมาชิก</strong>
             <input type="button" value="เพิ่มสมาชิก" class="btn btn-info" /><br /><br />
-            <table id="tblteam" class="table table-bordered table-condensed table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th bgcolor="grey"><font color="white">#</font></th>
-                        <th bgcolor="grey"><font color="white">รหัสพนักงาน</font></th>
-                        <th bgcolor="grey"><font color="white">ชื่อ สกุล</font></th>
-                        <th bgcolor="grey"><font color="white">ตำแหน่ง</font></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td>@Model.cod_Requester</td>
-                        <td>@Model.Fname @Model.LName</td>
-                        <td>@Model.Position</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="form-group">
+                <table id="tblteam" class="table table-bordered table-condensed table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th bgcolor="grey"><font color="white">#</font></th>
+                            <th bgcolor="grey"><font color="white">รหัสพนักงาน</font></th>
+                            <th bgcolor="grey"><font color="white">ชื่อ สกุล</font></th>
+                            <th bgcolor="grey"><font color="white">ตำแหน่ง</font></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>@Model.cod_Requester</td>
+                            <td>@Model.Fname @Model.LName</td>
+                            <td>@Model.Position</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <!--สมาชิก-->
+        <br />
         <div class="row marginbot-10">
             <div class="col-md-12 col-xs-12" style="background-color:dodgerblue"><font color="white">หัวหน้างาน</font></div>
         </div>
@@ -210,7 +230,7 @@
         <div class="row marginbot-10">
             <div class="col-md-12 col-xs-12" style="background-color:dodgerblue"><font color="white">สำหรับผู้ตรวจสอบข้อมูล</font></div>
         </div>
-        ฒิพฬ
+
         <div id="FinSGO">
             @{
                 var HeaderFS = ViewData["HeaderFS"];
@@ -264,15 +284,8 @@
                         <th bgcolor="grey" rowspan="2">คะแนน <br /> หัวข้อ</th>
                         @foreach (var h in HeaderNFS as IEnumerable<string>)
                         {
-                            <th bgcolor="grey" rowspan="2">@h</th>
+                            <th bgcolor="grey">@h</th>
                         }
-                        <th bgcolor="grey" colspan="4">ผลการประเมิน</th>
-                    </tr>
-                    <tr>
-                        <th bgcolor="grey">1</th>
-                        <th bgcolor="grey">2</th>
-                        <th bgcolor="grey">3</th>
-                        <th bgcolor="grey">X</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -282,19 +295,12 @@
                             <th>@Model.TopicNFs.Where(d => d.topic_id == t).Select(s => s.topic).FirstOrDefault()</th>
                             @foreach (var k in Model.TopicNFs.Where(s => s.topic_id == t))
                             {
-                                topic = k.topic;
                                 <th>
-                                    @*<input asp-for="score[ScoreNls].choice_id" type="radio" value="@k.choie_id" /> @k.choice_name*@
-                                    @k.choice_name
+                                    <input asp-for="score[ScoreNls].choice_id" type="radio" value="@k.choie_id" /> @k.choice_name
                                 </th>
                             }
-
-                            @for (int i = 0; i < 3; i++)
-                            {
-                                <th><input style="width: 40px;" type="number" name="NFS_@i" /></th>
-                            }
-                            <th><strong>00</strong></th>
                         </tr>
+                        ScoreNls++;
                     }
                 </tbody>
             </table>
@@ -311,7 +317,13 @@
 
 @section Scripts {
     <script src="~/js/JsViews/FilesManagement.js"></script>
+    <script src="~/AdminLTE/bower_components/select2/dist/js/select2.min.js"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    
+    <script>
+         $(document).ready(function () {
+             $('#Shift').select2();
+             $('#Dep_ID_Request').select2();
+         });
+    </script>
 
 }

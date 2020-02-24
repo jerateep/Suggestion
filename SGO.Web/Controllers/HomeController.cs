@@ -128,15 +128,6 @@ namespace SGO.Web.Controllers
             _entMy.SaveChanges();
             return View();
         }
-        public IActionResult DownloadFile(int Id)
-        {
-            var Getall = FileStore.Files;
-            var file = Getall.SingleOrDefault(k => k.Id == Id);
-            string fullpath = @"C:\Users\jerateeps\Downloads\" + file.FileName;
-            byte[] fileBytes = System.IO.File.ReadAllBytes(fullpath);
-            // string fileName = "test";
-            return File(fileBytes, file.ContentType, file.FileName);
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

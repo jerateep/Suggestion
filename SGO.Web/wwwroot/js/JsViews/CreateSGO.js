@@ -1,10 +1,9 @@
 ﻿$(document).ready(function () {
     $('#btnUpload').on('click', function () {
-        var files = $('#fUpload').prop("files");
         var fdata = new FormData();
-        
+        var files = $('#fUpload').prop("files");
         var txtdesc = document.getElementById("txtfiledesc").value;
-        console.log(txtdesc);
+        
         for (var i = 0; i < files.length; i++) {
             fdata.append("files", files[i]);
         }
@@ -46,7 +45,7 @@
 });
 
 function DeleteFile(id) {
-    //alert(id);
+
     var fdata = new FormData();
     fdata.append("id", id);
     $('#tblfile > tbody > tr > td').remove();
@@ -78,4 +77,5 @@ function DeleteFile(id) {
     $("#fUpload").val('');
     $("#txtfiledesc").val('');
 }
+
 

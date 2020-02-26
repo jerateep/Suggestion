@@ -1904,6 +1904,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SGO.Models\SGO.Models.csproj" />
     <ProjectReference Include="..\SGO.ViewModels\SGO.ViewModels.csproj" />
+    <ProjectReference Include="..\SGO.WebService\SGO.WebService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

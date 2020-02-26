@@ -12,6 +12,7 @@ namespace SGO.Models.MySQL
         public string SGO_ID { get; set; }
         public int App_rownum { get; set; }
         public string App_pers_id { get; set; }
+        public string App_name { get; set; }
         public string App_position { get; set; }
         public string txt_comment { get; set; }
         public string App_status { get; set; }

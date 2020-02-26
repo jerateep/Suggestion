@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
          page[size="A4"] {
           background: white;
           width: 21cm;
-          height: 50.7cm;
+          /*height: 29.7cm;*/
           display: block;
           margin: 0 auto;
           margin-bottom: 0.5cm;
@@ -92,10 +92,8 @@ desired effect
             <!-- Main content -->
             <section class="content container-fluid">
                 <page size="A4">
-                    <div class="box-body>
-                        <div class="box-body">
-                            @RenderBody()
-                        </div>
+                    <div class="box-body">
+                        @RenderBody()
                     </div>
                 </page>
             </section>
@@ -125,6 +123,8 @@ desired effect
     <script src="~/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/AdminLTE/dist/js/adminlte.min.js"></script>
+    <script src="~/js/vue.js"></script>
+    <script src="~/js/axios.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

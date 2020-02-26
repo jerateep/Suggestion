@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SGO.Models;
+using SGO.Models.API;
 using SGO.Models.MySQL;
 using SGO.ViewModels;
 using SGO.Web.Data;
+using SGO.WebService;
 using static System.Net.WebRequestMethods;
 
 namespace SGO.Web.Controllers
@@ -35,53 +37,54 @@ namespace SGO.Web.Controllers
                 return RedirectToAction("Login", "Auth");
             }
         }
-        public IActionResult CreateSGO(string empid) 
+        public IActionResult CreateSGO(string _sgoID) 
         {
-            string userName = User.Identity.Name;
-
             SGOCreateVM Create = new SGOCreateVM();
-            SGO_HEAD Data = new DummyData().GetHead().SingleOrDefault();
-            Create.SGO_ID = Data.SGO_ID;
-            Create.Status_name = "New";
-            Create.cod_Requester = Data.cod_Requester;
-            Create.Fname = Data.Fname;
-            Create.LName = Data.LName;
-            Create.dtm_Request = DateTime.Now.Date;
-            Create.Dep_name = Data.Dep_name;
-            Create.Dep_Section = Data.Dep_Section;
-            Create.department = _entMy.SGO_Department.ToList();
-            Create.SGOType = _entMy.SGO_Type.Where(x => x.Cod_group == "SGO" && x.SGOType_Status == "A").ToList();
-            Create.SHIFT = _entMy.SGO_SHIFT.ToList();
-            Create.Approver = new List<SGO_Approver>{ new SGO_Approver { App_pers_id = "B-1143",} };
-            Create.StatusAppMng = _entMy.SGO_Status.Where(k => k.Cod_group == "Approved").ToList();
-            if (Create.Status_name == "New")
+            var CookieUser = Request.Cookies["USER"];
+            //for test
+            CookieUser = "B-00000";
+            string Requester = CookieUser;
+            if (string.IsNullOrEmpty(Requester))
             {
-                Create.LsFils = FileStore.Files;
+                return RedirectToAction("Login", "Auth");
             }
             else
             {
-               //from query database
-            }
-            var topic = new DummyData().GetTopic();
-            var choice = new DummyData().GetTopicDetails();
-            //FS
-            Create.TopicFs = (from c in choice
-                      join t in topic.Where(g => g.@group == "FS") on c.topic_id equals t.topic_id
-                      select new FSTableVM
-                      {
-                          topic = t.topic,
-                          topic_id = c.topic_id,
-                          choice_row = c.choice_row,
-                          choie_id = c.choie_id,
-                          choice_name = c.choice_name
-                      }).ToList();
-            var HeaderFS = Create.TopicFs.Select(s => s.choice_row).Distinct();
-            ViewData["HeaderFS"] = HeaderFS;
-            ViewData["topicFS"] = Create.TopicFs.Select(s => s.topic_id).Distinct();
-            ViewBag.indexFS = HeaderFS.Count();
-            //NonFS
-            Create.TopicNFs = (from c in choice
-                              join t in topic.Where(g => g.@group == "NFS") on c.topic_id equals t.topic_id
+                var topic = new DummyData().GetTopic();
+                var choice = new DummyData().GetTopicDetails();
+                if (!string.IsNullOrEmpty(_sgoID))
+                {
+                    //requester edit
+
+                    //for show Approver
+
+                    //for show Account
+                }
+                else
+                {
+                    //New Sgo
+                    // Call emp WebService
+                    Employee EmpData = EmployeeService.GetEmployee(Requester);
+                    Create.SGO_ID = "";
+                    Create.Status_name = "เอกสารใหม่";
+                    Create.cod_Requester = Requester;
+                    Create.Fname = "นายเจ้าของ";
+                    Create.LName = "เอกสาร";
+                    Create.Dep_name = "IT";
+                    Create.Dep_Section = "IT Application";
+                    Create.dtm_Request = DateTime.Now.Date;
+                    //Call WebService Get Approver
+                    Create.Approver = new List<SGO_Approver>{ new SGO_Approver { App_pers_id = "B-1143", App_position = "IT Manager", App_name = "คุณเจอร์เทส เจอร์เทส"} };
+                    Create.Team = new List<SGO_TEAM> { new SGO_TEAM { pers_id = Requester, pers_name = "นายเจ้าของ เอกสาร" , pers_position = "IT Support"} };
+                    Create.LsFils = FileStore.Files;
+                    //MasterData
+                    Create.StatusAppMng = _entMy.SGO_Status.Where(k => k.Cod_group == "APP").ToList();
+                    Create.department = _entMy.SGO_Department.ToList();
+                    Create.SGOType = _entMy.SGO_Type.Where(x => x.Cod_group == "SGO" && x.SGOType_Status == "A").ToList();
+                    Create.SHIFT = _entMy.SGO_SHIFT.ToList();
+                    //FS
+                    Create.TopicFs = (from c in choice
+                              join t in topic.Where(g => g.@group == "FS") on c.topic_id equals t.topic_id
                               select new FSTableVM
                               {
                                   topic = t.topic,
@@ -90,10 +93,28 @@ namespace SGO.Web.Controllers
                                   choie_id = c.choie_id,
                                   choice_name = c.choice_name
                               }).ToList();
-            var HeaderNFS = Create.TopicNFs.Select(s => s.choice_row).Distinct();
-            ViewData["HeaderNFS"] = HeaderNFS;
-            ViewData["topicNFS"] = Create.TopicNFs.Select(s => s.topic_id).Distinct();
-            ViewBag.indexNFS = HeaderNFS.Count();
+                    var HeaderFS = Create.TopicFs.Select(s => s.choice_row).Distinct();
+                    ViewData["HeaderFS"] = HeaderFS;
+                    ViewData["topicFS"] = Create.TopicFs.Select(s => s.topic_id).Distinct();
+                    ViewBag.indexFS = HeaderFS.Count();
+                    //NonFS
+                    Create.TopicNFs = (from c in choice
+                                      join t in topic.Where(g => g.@group == "NFS") on c.topic_id equals t.topic_id
+                                      select new FSTableVM
+                                      {
+                                          topic = t.topic,
+                                          topic_id = c.topic_id,
+                                          choice_row = c.choice_row,
+                                          choie_id = c.choie_id,
+                                          choice_name = c.choice_name
+                                      }).ToList();
+                    var HeaderNFS = Create.TopicNFs.Select(s => s.choice_row).Distinct();
+                    ViewData["HeaderNFS"] = HeaderNFS;
+                    ViewData["topicNFS"] = Create.TopicNFs.Select(s => s.topic_id).Distinct();
+                    ViewBag.indexNFS = HeaderNFS.Count();
+                }
+            }
+  
             return View(Create);
         }
         public IActionResult Save(SGOCreateVM SGO, List<string> lsSGO)

@@ -7,13 +7,15 @@ namespace SGO.Models.MySQL
 {
     public class SGO_TEAM
     {
+        public string pers_name;
+
         [Key]
         public int Team_id  { get; set; }
         public string SGO_ID { get; set; }
         public int Team_rownum { get; set; }
         public string pers_id { get; set; }
         public string pers_position { get; set; }
-        public string txt_comment { get; set; }
+        public string role { get; set; }
         public string Team_Status { get; set; }
         public DateTime? dtm_approved { get; set; }
         public string cod_creator { get; set; }

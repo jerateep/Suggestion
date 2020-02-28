@@ -232,10 +232,10 @@
                                     index++;
                                 }
                             }
-                            <tr v-for="user in teams" :key="user.id">
+                            <tr v-for="user in teams" :key="user.emp_id">
                                 <td>#</td>
-                                <td>{{user.id}} </td>
-                                <td>{{user.F_name}} {{user.L_name}}</td>
+                                <td>{{user.emp_id}} </td>
+                                <td>{{user.emp_name}}</td>
                                 <td>{{user.job}}</td>
                                 <td><input asp-for="Team[0].role" type="text" /></td>
                                 <td>Delete</td>
@@ -243,6 +243,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!--Dialog Employee-->
                 <div class="modal fade" id="modalTeam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -253,7 +254,11 @@
                             </div>
                             <!--Details-->
                             <div class="modal-body">
-                                <table>
+                                <div id="tblEmployee">
+                                    <data-table :comments="filteredComments" v-model="teams"></data-table>
+                                </div>
+                                <div id="backup">
+                                @*<table id="tblEmployee" class="display" style="width:100%" border="1">
                                     <thead>
                                         <tr>
                                             <th>Employee Id</th>
@@ -268,7 +273,8 @@
                                             <td>{{user.job}}</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table>*@
+                                </div>
                             </div>
                             <!--Button-->
                             <div class="modal-footer">
@@ -282,6 +288,7 @@
                         </div>
                     </div>
                 </div>
+                <!--Dialog Employee-->
             </div>
             <!--สมาชิก-->
             <br />
@@ -419,6 +426,7 @@
             $('#Shift').select2();
             $('#Dep_ID_Request').select2();
         });
+
     </script>
 
 }

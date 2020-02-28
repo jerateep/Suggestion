@@ -7,9 +7,17 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\**" />
+    <Compile Remove="wwwroot\AdminLTE\bower_components\datatables.net-bs\**" />
+    <Compile Remove="wwwroot\AdminLTE\bower_components\datatables.net\**" />
     <Content Remove="Migrations\**" />
+    <Content Remove="wwwroot\AdminLTE\bower_components\datatables.net-bs\**" />
+    <Content Remove="wwwroot\AdminLTE\bower_components\datatables.net\**" />
     <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="wwwroot\AdminLTE\bower_components\datatables.net-bs\**" />
+    <EmbeddedResource Remove="wwwroot\AdminLTE\bower_components\datatables.net\**" />
     <None Remove="Migrations\**" />
+    <None Remove="wwwroot\AdminLTE\bower_components\datatables.net-bs\**" />
+    <None Remove="wwwroot\AdminLTE\bower_components\datatables.net\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -520,14 +528,29 @@
     <Content Include="wwwroot\AdminLTE\bower_components\ckeditor\skins\moono\images\lock.png" />
     <Content Include="wwwroot\AdminLTE\bower_components\ckeditor\skins\moono\images\refresh.png" />
     <Content Include="wwwroot\AdminLTE\bower_components\ckeditor\skins\moono\images\spinner.gif" />
-    <Content Include="wwwroot\AdminLTE\bower_components\datatables.net-bs\.bower.json" />
-    <Content Include="wwwroot\AdminLTE\bower_components\datatables.net-bs\bower.json" />
-    <Content Include="wwwroot\AdminLTE\bower_components\datatables.net-bs\css\dataTables.bootstrap.css" />
-    <Content Include="wwwroot\AdminLTE\bower_components\datatables.net-bs\css\dataTables.bootstrap.min.css" />
-    <Content Include="wwwroot\AdminLTE\bower_components\datatables.net-bs\License.txt" />
-    <Content Include="wwwroot\AdminLTE\bower_components\datatables.net\.bower.json" />
-    <Content Include="wwwroot\AdminLTE\bower_components\datatables.net\bower.json" />
-    <Content Include="wwwroot\AdminLTE\bower_components\datatables.net\License.txt" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.bootstrap.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.bootstrap.min.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.bootstrap4.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.foundation.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.foundation.min.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.jqueryui.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.jqueryui.min.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.material.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.material.min.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.semanticui.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.semanticui.min.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.uikit.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\dataTables.uikit.min.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\jquery.dataTables.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\jquery.dataTables.min.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\images\favicon.ico" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\images\sort_asc.png" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\images\sort_asc_disabled.png" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\images\sort_both.png" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\images\sort_desc.png" />
+    <Content Include="wwwroot\AdminLTE\bower_components\Datatables\images\sort_desc_disabled.png" />
     <Content Include="wwwroot\AdminLTE\bower_components\eve-raphael\.bower.json" />
     <Content Include="wwwroot\AdminLTE\bower_components\eve-raphael\bower.json" />
     <Content Include="wwwroot\AdminLTE\bower_components\eve-raphael\component.json" />
@@ -4640,12 +4663,25 @@
     <None Include="wwwroot\AdminLTE\bower_components\ckeditor\skins\moono\skin.js" />
     <None Include="wwwroot\AdminLTE\bower_components\ckeditor\styles.js" />
     <None Include="wwwroot\AdminLTE\bower_components\ckeditor\vendor\promise.js" />
-    <None Include="wwwroot\AdminLTE\bower_components\datatables.net-bs\js\dataTables.bootstrap.js" />
-    <None Include="wwwroot\AdminLTE\bower_components\datatables.net-bs\js\dataTables.bootstrap.min.js" />
-    <None Include="wwwroot\AdminLTE\bower_components\datatables.net-bs\Readme.md" />
-    <None Include="wwwroot\AdminLTE\bower_components\datatables.net\js\jquery.dataTables.js" />
-    <None Include="wwwroot\AdminLTE\bower_components\datatables.net\js\jquery.dataTables.min.js" />
-    <None Include="wwwroot\AdminLTE\bower_components\datatables.net\Readme.md" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\images\Sorting icons.psd" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.bootstrap.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.foundation.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.foundation.min.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.jqueryui.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.jqueryui.min.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.material.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.material.min.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.semanticui.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.semanticui.min.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.uikit.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\dataTables.uikit.min.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\jquery.dataTables.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\jquery.js" />
+    <None Include="wwwroot\AdminLTE\bower_components\Datatables\js\vfs_fonts.js" />
     <None Include="wwwroot\AdminLTE\bower_components\eve-raphael\eve.js" />
     <None Include="wwwroot\AdminLTE\bower_components\eve-raphael\LICENSE" />
     <None Include="wwwroot\AdminLTE\bower_components\eve-raphael\README.md" />

@@ -11,3 +11,16 @@ C:\Users\jerateeps\Desktop\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO
 C:\Users\jerateeps\Desktop\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.csproj.CopyComplete
 C:\Users\jerateeps\Desktop\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.dll
 C:\Users\jerateeps\Desktop\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.pdb
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\bin\Debug\netcoreapp3.1\SGO.WebService.deps.json
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\bin\Debug\netcoreapp3.1\SGO.WebService.dll
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\bin\Debug\netcoreapp3.1\SGO.WebService.pdb
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\bin\Debug\netcoreapp3.1\SGO.Models.dll
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\bin\Debug\netcoreapp3.1\SGO.ViewModels.dll
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\bin\Debug\netcoreapp3.1\SGO.Models.pdb
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\bin\Debug\netcoreapp3.1\SGO.ViewModels.pdb
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.csprojAssemblyReference.cache
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.AssemblyInfoInputs.cache
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.AssemblyInfo.cs
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.csproj.CopyComplete
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.dll
+C:\Users\jerateeps\Desktop\lerning\Suggestion\SGO.WebService\obj\Debug\netcoreapp3.1\SGO.WebService.pdb

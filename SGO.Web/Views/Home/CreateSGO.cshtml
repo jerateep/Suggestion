@@ -140,60 +140,60 @@
                     </div>
                     <div class="col-sm-6">
                         <strong>2. รายละเอียด</strong><br />
-                        <input type="text" id="txtfiledesc"/>
+                        <input type="text" id="txtfiledesc" />
                         <input type="button" id="btnUpload" value="Upload" class="btn btn-success" formmethod="post" formenctype="multipart/form-data" />
-                    </div>                    
+                    </div>
                 </div>
                 <br />
-                    <!--Button upload & text description-->
-                    <br />
-                    <!--table show file-->
-                    <div class="form-group">
-                        <table id="tblfile" class="table table-bordered table-condensed table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th bgcolor="grey"><font color="white">#</font></th>
-                                    <th bgcolor="grey"><font color="white">ชื่อไฟล์</font></th>
-                                    <th bgcolor="grey"><font color="white">รายละเอียด</font></th>
-                                    <th bgcolor="grey" colspan="1"><font color="white"></font></th>
-                                    <th bgcolor="grey"><font color="white"></font></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model.LsFils != null)
+                <!--Button upload & text description-->
+                <br />
+                <!--table show file-->
+                <div class="form-group">
+                    <table id="tblfile" class="table table-bordered table-condensed table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th bgcolor="grey"><font color="white">#</font></th>
+                                <th bgcolor="grey"><font color="white">ชื่อไฟล์</font></th>
+                                <th bgcolor="grey"><font color="white">รายละเอียด</font></th>
+                                <th bgcolor="grey" colspan="1"><font color="white"></font></th>
+                                <th bgcolor="grey"><font color="white"></font></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.LsFils != null)
+                            {
+                                @foreach (var k in Model.LsFils)
                                 {
-                                    @foreach (var k in Model.LsFils)
+                                    <tr>
+                                        <td>@k.Id</td>
+                                        <td>@k.FileName</td>
+                                        <td>@k.Description</td>
+                                        @*@if (Model.Status_name != "New")
+                                    {*@
+                                        <td>
+                                            @*<input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' />*@
+                                            @Html.ActionLink(
+                                                "Download",
+                                                "DownloadFile",
+                                                "Home",
+                                                new { k.Id },
+                                                new { @class = "btn btn-info" }
+                                            )
+                                        </td>
+                                        @*}
+                                    else
                                     {
-                                        <tr>
-                                            <td>@k.Id</td>
-                                            <td>@k.FileName</td>
-                                            <td>@k.Description</td>
-                                            @*@if (Model.Status_name != "New")
-                                {*@
-                                            <td>
-                                                @*<input type='button' id='delfile' onClick='DownloadFile(@k.Id)' class='btn btn-info' value='Delete' />*@
-                                                @Html.ActionLink(
-                                                    "Download",
-                                                    "DownloadFile",
-                                                    "Home",
-                                                    new { k.Id },
-                                                    new { @class = "btn btn-info" }
-                                                )
-                                            </td>
-                                            @*}
-                                else
-                                {
-                                    <td>_</td>
-                                }*@
-                                            <td><input type='button' id='delfile' onClick='DeleteFile(@k.Id)' class='btn btn-danger' value='Delete' /></td>
-                                        </tr>
-                                    }
+                                        <td>_</td>
+                                    }*@
+                                        <td><input type='button' id='delfile' onClick='DeleteFile(@k.Id)' class='btn btn-danger' value='Delete' /></td>
+                                    </tr>
                                 }
-                            </tbody>
-                        </table>
-                    </div>
-                    <!--table show file-->
+                            }
+                        </tbody>
+                    </table>
                 </div>
+                <!--table show file-->
+            </div>
             <!--ไฟล์แนบ-->
             <br />
             <!--สมาชิก-->
@@ -254,27 +254,35 @@
                             </div>
                             <!--Details-->
                             <div class="modal-body">
-                                <div id="tblEmployee">
-                                    <data-table :comments="filteredComments" v-model="teams"></data-table>
-                                </div>
-                                <div id="backup">
-                                @*<table id="tblEmployee" class="display" style="width:100%" border="1">
-                                    <thead>
-                                        <tr>
-                                            <th>Employee Id</th>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="user in users" :key="user.id" v-on:click="SelectEmp(user)">
-                                            <td>{{user.id}} </td>
-                                            <td>{{user.F_name}} {{user.L_name}}</td>
-                                            <td>{{user.job}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>*@
-                                </div>
+                                    <v-app id="tblEmployees">
+                                        <v-card>
+                                            <v-card-title>
+                                                <v-spacer></v-spacer>
+                                                <v-text-field append-icon="search"
+                                                              label="Search"
+                                                              single-line
+                                                              hide-details
+                                                              v-model="search">
+                                                </v-text-field>
+                                            </v-card-title>
+                                            <v-data-table v-model="teams"
+                                                          :headers="headers"
+                                                          :items="employees"
+                                                          :search="search">
+                                                <template slot="items" slot-scope="props">
+                                                    <tr v-on:click="showAlert(props.item)">
+                                                            <td>{{ props.item.emp_id }}</td>
+                                                            <td>{{ props.item.emp_name }}</td>
+                                                            <td>{{ props.item.job }}</td>
+                                                            <td>{{ props.item.dep }}</td>
+                                                    </tr>
+                                                </template>
+                                                <v-alert slot="no-results" :value="true" color="error" icon="warning">
+                                                    Your search for "{{ search }}" found no results.
+                                                </v-alert>
+                                            </v-data-table>
+                                        </v-card>
+                                    </v-app>
                             </div>
                             <!--Button-->
                             <div class="modal-footer">

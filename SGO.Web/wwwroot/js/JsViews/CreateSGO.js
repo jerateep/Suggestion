@@ -94,103 +94,33 @@ function openTab(evt, tabname) {
     evt.currentTarget.className += " active";
 }
 
-/*
- vue team table
- */
-/*
-new Vue({
-    el: "#DivMember",
-    data() {
-        return {
-            users: [],
-            teams: []
-        }
-    },
-    methods: {
-        SelectEmp: function (user) {
-            this.teams.push(user)
-            console.log(user);
-        }
-    },
-    mounted: function () {
-        axios
-            .get('http://localhost:3000/data/')
-            .then(response => {
-                this.users = response.data;
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
-})
- vue team table
- */
-
-/*-----------------------------------------*/
-
-
-Vue.component('data-table', {
-    render: function (createElement) {
-        return createElement(
-            "table", null, []
-        )
-    },
-    props: ['comments'],
-    data() {
-        return {
-            headers: [
-                { title: 'EmployeeId' },
-                { title: 'Name' },
-                { title: 'Position' },
-                { title: 'Department' }
-            ],
-            rows: [],
-            dtHandle: null
-        }
-    },
-    watch: {
-        comments(val, oldVal) {
-            let vm = this;
-            vm.rows = [];
-            val.forEach(function (item) {
-                let row = [];
-                row.push(item.emp_id);
-                row.push(item.emp_name);
-                row.push(item.job);
-                row.push(item.dep);
-                vm.rows.push(row);
-            });
-            vm.dtHandle.clear();
-            vm.dtHandle.rows.add(vm.rows);
-            vm.dtHandle.draw();
-        }
-    },
-    mounted() {
-        let vm = this;
-        vm.dtHandle = $(this.$el).DataTable({
-            columns: vm.headers,
-            data: vm.rows,
-            searching: true,
-            paging: true,
-            info: false
-        });
-    }
-});
-
+/*------------------------------------------*/
 new Vue({
     el: '#DivMember',
-    data: {
-        comments: [],
-        teams: [],
-        search: ''
+    methods: {
+        showAlert(a) {
+            if (event.target.classList.contains('btn__content')) return;
+            this.teams.push(a);
+            this.$refs.formDialog.close();
+        }
     },
-    computed: {
-        filteredComments: function () {
-            let self = this
-            let search = self.search.toLowerCase()
-            return self.comments.filter(function (comments) {
-                return comments;
-            })
+    data() {
+        return {
+         //   selected: [],
+            teams: [],
+            search: '',
+            headers: [
+                {
+                    text: 'Employee Id',
+                    align: 'left',
+                    sortable: false,
+                    value: 'emp_id'
+                },
+                { text: 'Employee Name', value: 'emp_name' },
+                { text: 'Position', value: 'job' },
+                { text: 'Department', value: 'dep' }
+            ],
+            employees: []
         }
     },
     mounted() {
@@ -199,12 +129,10 @@ new Vue({
             url: 'http://localhost:3000/data/',
             success(res) {
                 console.log(res);
-                vm.comments = res;
+                vm.employees = res;
             }
         });
-    },
-    method: {
-
     }
-});
+})
 /*-----------------------------------------*/
+

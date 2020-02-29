@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.WebService\\SGO.WebService.csproj": {}
+    "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
+    "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj",
+        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj",
         "projectName": "SGO.Models",
-        "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj",
+        "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj",
         "packagesPath": "C:\\Users\\jerateeps\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\obj\\",
+        "outputPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\jerateeps\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -25,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -60,18 +56,15 @@
         }
       }
     },
-    "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj": {
+    "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj",
+        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj",
         "projectName": "SGO.ViewModels",
-        "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj",
+        "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj",
         "packagesPath": "C:\\Users\\jerateeps\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.ViewModels\\obj\\",
+        "outputPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\jerateeps\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -81,14 +74,13 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
-                "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj"
+              "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
+                "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj"
               }
             }
           }
@@ -126,18 +118,15 @@
         }
       }
     },
-    "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.WebService\\SGO.WebService.csproj": {
+    "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
+        "projectUniqueName": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
         "projectName": "SGO.WebService",
-        "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
+        "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\SGO.WebService.csproj",
         "packagesPath": "C:\\Users\\jerateeps\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.WebService\\obj\\",
+        "outputPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.WebService\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\jerateeps\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -147,17 +136,16 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
-                "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.Models\\SGO.Models.csproj"
+              "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj": {
+                "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.Models\\SGO.Models.csproj"
               },
-              "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj": {
-                "projectPath": "C:\\Users\\jerateeps\\Desktop\\lerning\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj"
+              "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj": {
+                "projectPath": "C:\\Users\\jerateeps\\Desktop\\Suggestion\\SGO.ViewModels\\SGO.ViewModels.csproj"
               }
             }
           }
